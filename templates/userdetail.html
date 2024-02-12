@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %} User Details {% endblock %}
+{% block content %}
+
+<div>
+<img src="{{user.image_url}}" height="100" width="100">
+<h4>{{user.first_name}} {{user.last_name}}</h4>
+</div>
+<!-- <button id="editbutton"><a href="/users/{{user_id}}/edit">Edit user</a></button> commented out for bootstrap styles -->
+<span class="buttoncontainer">
+<a class="btn btn-sm btn-primary" href="/users/{{user_id}}/edit">Edit user</a>
+<!-- <button id="gobackbutton"><a href="/users">Go back</a></button> commented out for bootstrap styles  -->
+<a class="btn btn-sm btn-warning" href="/users">Go back</a>
+</span>
+
+<div id="just-line-break">
+    <br/>
+</div>
+
+
+<form action="/users/{{user_id}}/delete" method="POST">
+<button id="deletebutton" class="btn btn-sm btn-danger">Delete user</button>
+</form>
+
+<div id="just-line-break">
+  <br/>
+</div>
+<h3>User Posts</h3>
+
+{% for post in user_posts %}
+<li><a href="/posts/{{post.id}}">{{post.title}}.... Posted ( {{post.created_at}} )</a></li>
+{% endfor %}
+
+<div id="just-line-break">
+  <br/>
+</div>
+
+<a class="btn btn-sm btn-primary" href="/users/{{user_id}}/posts/new">New Post</a>
+
+<div id="just-line-break">
+  <br/>
+</div>
+
+<audio controls autoplay>
+    <source src="https://ia600900.us.archive.org/1/items/tvtunes_7065/Beverly%20Hills%20Cop.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+  </audio>
+<ul id="messagecontainer"></ul>
+
+<p>Thanks for browsing!</p>
+    
+{%endblock%}

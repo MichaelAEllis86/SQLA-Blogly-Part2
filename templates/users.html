@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Users list page{% endblock %}
+{% block content %}
+
+
+<h4>Users list</h4>
+
+{% for user in users %}
+<div>
+<li> <a href="/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a></li>
+</div>
+{% endfor %}
+
+<ul id="messagecontainer"></ul>
+<!-- <button type="button" class="btn btn-primary"><a href="/users/new" class="link-danger">Add User</a></button> commented out for bootstrap formatting --> 
+<p><a class="btn btn-sm btn-primary" href="/users/new">Add user</a></p> 
+<!-- i dont understand how we get a button out of this without an actual button tag! bootstrap magic -->
+
+<p>Thanks for browsing!</p>
+    
+{%endblock%}

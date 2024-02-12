@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} New user {% endblock %}
+{% block content %}
+
+<h4>{{post.title}}</h4>
+
+<p>{{post.content}}</p>
+
+<i>By {{post.user_info.first_name}} {{post.user_info.last_name}}</i>
+
+<div id="just-line-break">
+    <br/>
+</div>
+
+<a class="btn btn-sm btn-warning" href="/users/{{integer_user_id}}">Go back</a> <a class="btn btn-sm btn-primary" href="/posts/{{post.id}}/edit">Edit post</a> 
+
+<form action="/posts/{{post.id}}/delete" method="POST">
+    <button id="deletebutton" class="btn btn-sm btn-danger">Delete post</button>
+    </form>
+    
+
+
+<ul id="messagecontainer"></ul>
+
+<p>Thanks for browsing!</p>
+    
+</body>
+</html>
+{%endblock%}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} New user {% endblock %}
+{% block content %}
+
+<h4>Edit post for {{post.user_info.first_name}} {{post.user_info.last_name}}</h4>
+    
+<form id="" action="/posts/{{post.id}}/edit" method="POST">
+    <p id="firstnametag">Title</p>
+    <input type="text" name="title" value="{{post.title}}">
+    <p id="lastnametag">Content</p>
+    <textarea name="content" id="contentbox" cols="30" rows="5">{{post.content}}</textarea>
+    <button id="button">Submit Post</button>
+</form>
+<a class="btn btn-sm btn-warning" href="/posts/{{post.id}}">Go back</a>
+
+<ul id="messagecontainer"></ul>
+
+<p>Thanks for browsing!</p>
+    
+</body>
+</html>
+{%endblock%}
