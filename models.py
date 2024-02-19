@@ -34,21 +34,30 @@ class User(db.Model):
                         default='https://i.imgur.com/SHxfpjI.jpg'
                         )
     
-    post_info=db.relationship("Post")
+    post_info=db.relationship("Post", cascade="all, delete-orphan")
     
     # posts=db.relationship("Posts", backref="Users")
-#problem exists with image_url model will not accept strings longer than 50, creates a pyscopig error -------->Fixed!
-#problem exits with default image, for one it doens't work because of imgur in a img tag, also the default is not filling when the form is left blank ----->Need to fix!
+#problem exists with image_url model will not accept strings longer than 50, creates a pyscopig error -------->Fixed by changing db.column type to text and recreating db!
+#problem exits with default image, for one it doens't work because of imgur's anti-display code in a img tag, also the default is not filling when the form is left blank ----->Need to fix!
 
 class Post(db.Model):
     """Posts model, a post has one user/creator"""
+
+    
+    def format_date(self):
+
+        months={1:"January", 2:"February", 3:"March", 4:"April", 5:"May", 6:"June", 7:"July", 8:"August", 9:"September", 10:"October", 11:"November", 12:"December"}
+        month_key=self.created_at.month
+        named_month=months[month_key]
+        friendly_time=self.created_at.strptime(f'{self.created_at.hour}:{self.created_at.minute}','%H:%M').strftime('%I:%M %p')
+        
+        return f"{named_month} {self.created_at.day}, {self.created_at.year} at {friendly_time}"
 
     @classmethod
     def print_current_time(self):
         print(f"{datetime.now()}")
         return(f"{datetime.now()}")
-
-
+    
     __tablename__ = "posts"
 
     def __repr__(self):

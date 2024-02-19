@@ -1,13 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %} Users list page{% endblock %}
+{% block content %}
 
-<h1>Hello! I am running! Welcome back Apop! This is the blogly home</h1>
+
+<h4>Welcome to the Blogly Home Page!</h4>
+
+<h4><u>Recent Posts!</u></h4>
+
+{% for post in recent_posts %}
+<li><a href="/posts/{{post.id}}">{{post.title}}.... Posted on {{post.format_date()}} </a></li>
+{% endfor %}
+
+<ul id="messagecontainer"></ul>
+<!-- <button type="button" class="btn btn-primary"><a href="/users/new" class="link-danger">Add User</a></button> commented out for bootstrap formatting --> 
+<p><a class="btn btn-sm btn-primary" href="/users/new">Add user</a></p> 
+<!-- i dont understand how we get a button out of this without an actual button tag! bootstrap magic -->
+
+<p>Thanks for browsing!</p>
     
-</body>
-</html>
+{%endblock%}

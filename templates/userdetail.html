@@ -25,10 +25,11 @@
 <div id="just-line-break">
   <br/>
 </div>
-<h3>User Posts</h3>
+
+<h4>User Posts</h4>
 
 {% for post in user_posts %}
-<li><a href="/posts/{{post.id}}">{{post.title}}.... Posted ( {{post.created_at}} )</a></li>
+<li><a href="/posts/{{post.id}}">{{post.title}}.... Posted on {{post.format_date()}} </a></li>
 {% endfor %}
 
 <div id="just-line-break">

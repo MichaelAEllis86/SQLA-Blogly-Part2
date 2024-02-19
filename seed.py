@@ -28,5 +28,5 @@ P4=Post(title="Road work ahead", content="well yeah, I sure hope it does!",user_
 P5=Post(title="Minimum safe distance from a moose", content="far away....a moose can run up to 35 mph",user_id=5)
 
 
-db.session.add_all([P1,P2,P3,P4,P5,])
+db.session.add_all([P1,P2,P3,P4,P5])
 db.session.commit()
